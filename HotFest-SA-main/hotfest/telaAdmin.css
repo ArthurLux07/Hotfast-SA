@@ -29,7 +29,7 @@ h1{
     
     font-family: "Poppins", sans-serif;
     color: #adadad;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 /* estilo para o container branco */
@@ -161,13 +161,14 @@ input {
     font-size: 20px;
     border: 1px solid #ffd930;
     cursor: pointer;
-    margin-left: 45%;
+    margin-left: 650px;
+    margin-top: 350px;
+    position: fixed;
 }
 
 .centralizarBtn {
     width: 100%;
     margin: auto;
-    position: fixed;
     bottom: 0;
     align-items: center;
     justify-content: center;
@@ -176,17 +177,18 @@ input {
 }
 
 .modal-content {
+    border-radius: 40px;
     background-color: #ffffff;
     padding: 20px;
-    padding-bottom: 350px;
     border: 1px solid #888;
     width: 30%;
     overflow-x: hidden;
     margin: auto;
-    margin-top: 2px;
-    margin-bottom: 200px;
     text-align: center;
     align-items: center;
+    margin-right: 610px;
+    margin-top: 80px;
+    margin-bottom: 30px;
    
 }
 
@@ -199,7 +201,8 @@ input {
 /* estilo para o título do cadastro */
  .tituloCadastro {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    color: black;
  }
  
  /* estilo para os inputs dentro do modal */
@@ -210,6 +213,20 @@ input {
 
 /* estilo para o botão de cadastrar produto */
  #btnCadastrarProduto {
+    border-radius: 50px;
+    color: white;
+    background-color: #B21A18;
+    font-size: 20px;
+    width: 250px;
+    height: 50px;
+    cursor: pointer;
+    align-items: center;
+    align-content: center;
+    margin-top: 30px;
+ }
+
+ #btnsalvarAlteracao{
+
     border-radius: 50px;
     color: white;
     background-color: #B21A18;
@@ -259,7 +276,7 @@ input {
 
 .inptsModal{
 
-    margin-bottom: 300px;
+    margin-bottom: 20px;
 }
 
 #produtos {

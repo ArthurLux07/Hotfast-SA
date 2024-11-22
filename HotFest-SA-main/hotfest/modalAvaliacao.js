@@ -1,16 +1,13 @@
-const modal = document.getElementById('modalAvaliacao')
 
-function adicionarAvaliacao(){
-
-    modal.style.display = "block";
+function adicionarAvaliacao() {
+    const modal = document.getElementById('modalAvaliacao');
+    modal.style.display = 'block';
 
 }
 
 function fecharModal() {
- // pega o modal e fecha ele
-
-    modal.style.display = "none";
-
+    const modal = document.getElementById('modalAvaliacao');
+    modal.style.display = 'none';
 }
 
 window.onclick = function(event) {
@@ -19,29 +16,25 @@ window.onclick = function(event) {
         fecharModal();
     }
 }
+
 function Avaliar() {
     const nome = document.getElementById('nome').value;
-    const preco = document.getElementById('estrela').value;
-    const descricao = document.getElementById('depoimento').value;
-    const urlImage = document.getElementById('urlImage').value;
+    const estrelas = document.getElementById('estrela').value;
+    const depoimento = document.getElementById('depoimento').value;
+    const imagem = document.getElementById('urlImage').value;
 
-    const avaliacoes = {
-        nome,
-        estrela,
-        depoimento,
-        urlImage
-    };
-
-    if (avaliacoes.nome && avaliacoes.estrela && avaliacoes.depoimento) {
-        let avaliacoes = JSON.parse(localStorage.getItem('avaliacoes')) || [];
-        avaliacoes.push(avaliacoes);
-        localStorage.setItem('avaliacoes', JSON.stringify(avaliacoes));
-
-        limparFormulario();
-        exibirAvaliacao();
-
+    if (nome && estrelas && depoimento && imagem) {
+        const lista = document.getElementById('listaAvaliacoes');
+        const novaAvaliacao = document.createElement('li');
+        novaAvaliacao.innerHTML = `
+            <p><strong>${nome}</strong> (${estrelas} estrelas)</p>
+            <p>${depoimento}</p>
+            <img src="${imagem}" alt="Imagem do produto" width="100">
+        `;
+        lista.appendChild(novaAvaliacao);
+        fecharModal();
     } else {
-        alert('Preencha todos os campos para cadastrar o produto!');
+        alert('Por favor, preencha todos os campos!');
     }
 }
 
@@ -56,53 +49,76 @@ function exibirAvaliacao() {
     const avaliacoes = JSON.parse(localStorage.getItem('avaliacoes')) || [];
     const listaAvaliacoes = document.getElementById('listaAvaliacoes');
     listaAvaliacoes.innerHTML = '';
-  
-    for (let i in avaliacoes) {
-        const avaliacoes = avaliacoes[i];
+
+    avaliacoes.forEach((avaliacao, index) => { // O método forEach percorre cada item do array avaliacoes. Para cada item: 
+        //O parâmetro avaliacao representa o elemento atual da iteração.
+ // O parâmetro index representa a posição do elemento dentro do array.
         const li = document.createElement('li');
         li.classList.add('avaliacoes-item');
-  
+
         const img = document.createElement('img');
-        img.classList.add('avaliacoes-img'); 
-        img.src = produto.urlImage;
-        img.style.margin = '10px'; 
-        img.style.width = '100px'; 
+        img.classList.add('avaliacoes-img');
+        img.src = avaliacao.urlImage;
+        img.alt = `Imagem do produto avaliado`;
+        img.style.margin = '10px';
+        img.style.width = '100px';
         img.style.height = 'auto';
 
         const nome = document.createElement('p');
-        nome.textContent = produ.nome; 
+        nome.textContent = `Nome: ${avaliacao.nome}`;
 
-        const preco = document.createElement('p');
-        preco.innerHTML = `<span>Preço:</span> R$${produto.preco}`; 
+        const estrela = document.createElement('p');
+        estrela.innerHTML = `<span>Estrelas:</span> ${avaliacao.estrela}`;
 
-        const descricao = document.createElement('p');
-        descricao.innerHTML = `<span>Descrição:</span> ${produto.descricao}`; 
-                
+        const depoimento = document.createElement('p');
+        depoimento.innerHTML = `<span>Depoimento:</span> ${avaliacao.depoimento}`;
+
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Deletar';
         deleteBtn.classList.add('delete-btn');
-        deleteBtn.onclick = () => deletarProduto(i);
-        
+        deleteBtn.onclick = () => deletarAvaliacao(index);
+
         li.appendChild(img);
         li.appendChild(nome);
-        li.appendChild(preco);
-        li.appendChild(descricao);
+        li.appendChild(estrela);
+        li.appendChild(depoimento);
         li.appendChild(deleteBtn);
-        
-        listaProdutos.appendChild(li);
+
+        listaAvaliacoes.appendChild(li);
+    });
+}
+
+function deletarAvaliacao(index) {
+    let avaliacoes = JSON.parse(localStorage.getItem('avaliacoes')) || [];
+    avaliacoes.splice(index, 1);
+    localStorage.setItem('avaliacoes', JSON.stringify(avaliacoes));
+    exibirAvaliacao();
+}
+
+function salvarAvaliacao() {
+    const nome = document.getElementById('nome').value;
+    const estrela = document.getElementById('estrela').value;
+    const depoimento = document.getElementById('depoimento').value;
+    const urlImage = document.getElementById('urlImage').value;
+
+    if (!nome || !estrela || !depoimento || !urlImage) {
+        alert('Por favor, preencha todos os campos!');
+        return;
     }
-  }
-  
-  function deletarProduto(index) {
-      let produtos = JSON.parse(localStorage.getItem('produtos'));
-      produtos.splice(index, 1);
-      localStorage.setItem('produtos', JSON.stringify(produtos));
-      exibirProdutos();
-  }
-  
-  function limparProdutos() {
-      localStorage.removeItem('produtos');
-      exibirProdutos();
-  }
-  
-  window.onload = exibirProdutos;
+
+    const novaAvaliacao = { nome, estrela, depoimento, urlImage };
+    const avaliacoes = JSON.parse(localStorage.getItem('avaliacoes')) || [];
+    avaliacoes.push(novaAvaliacao);
+    localStorage.setItem('avaliacoes', JSON.stringify(avaliacoes));
+
+    limparFormulario();
+    exibirAvaliacao();
+    fecharModal();
+}
+
+function limparAvaliacao() {
+    localStorage.removeItem('avaliacoes');
+    exibirAvaliacao();
+}
+
+window.onload = exibirAvaliacao;

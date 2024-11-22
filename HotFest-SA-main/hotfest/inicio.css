@@ -135,7 +135,7 @@ h1{
     
     font-family: "Poppins", sans-serif;
     color: #adadad;
-    font-size: 20px;
+    font-size: 26px;
 }
 
 /* estilo para o ícone*/
@@ -255,6 +255,13 @@ input {
    height: 50px;
 }
 
+.botaoX{
+    cursor: pointer;
+    margin-right: 520px;
+    width: 50px;
+    height: 50px;
+ }
+
 /* estilo para o ícone de carrinho 2 */
 .carrinhoImg2 {
     width: 70px;
@@ -326,8 +333,7 @@ input {
     color: #333;
 }
 
-#btnAbrirModal{
-
+#btnAbrirModal {
     border-radius: 50px;
     background-color: #ffd930;
     width: 250px;
@@ -336,22 +342,41 @@ input {
     font-size: 20px;
     border: 1px solid #ffd930;
     cursor: pointer;
-    margin-left: 45%;
+    margin-left: 720px;
+    margin-top: 400px;
+    
 }
 
 .modal-content-avaliacao{
 
+    border-radius: 40px;
     background-color: #ffffff;
     padding: 20px;
-    padding-bottom: 350px;
     border: 1px solid #888;
     width: 30%;
     overflow-x: hidden;
     margin: auto;
-    margin-top: 2px;
-    margin-bottom: 200px;
     text-align: center;
     align-items: center;
+    margin-right: 660px;
+    margin-top: 80px;
+    margin-bottom: 30px;
+   
+}
+
+.modalAvaliacao { 
+    
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: #00000094;
+    margin: auto;
 }
 
 .tituloAvaliacao{
@@ -364,7 +389,6 @@ input {
 .centralizarBtn {
     width: 100%;
     margin: auto;
-    position: fixed;
     bottom: 0;
     align-items: center;
     justify-content: center;
@@ -418,8 +442,10 @@ input {
 
 .inptsModal{
 
-    margin-bottom: 300px;
+    margin-bottom: 20px;
+
 }
+
 
 #avaliacoes {
     margin-top: 20px;

@@ -21,7 +21,7 @@
             <div class = "icones">
                 <img onclick = "abrirCadastro()" class = "iconeImg" src="icone.png">
                 <img class="linha" src="linha.png" alt="linha">
-                <img onclick="abrirModal()" class = "iconeImg" src="carrinho.png">
+                <img onclick="abrirModal()" id = "carrinho" class = "iconeImg" src="carrinho.png">
             </div>
         </div>
     </div>
@@ -53,13 +53,13 @@
         <ul id="listaAvaliacoes"></ul>
     </div>
     
-    <div class = centralizarBtn></div>
-        <button onclick="adicionarAvaliacao()" id="btnAbrirModal"> Adicionar Avaliação + </button>
+    <div class = centralizarBtn>
+        <button onclick="adicionarAvaliacao()" id="btnAbrirModal"> Adicionar avaliação + </button>
     </div>
 
     <div id="modalAvaliacao" class="modalAvaliacao">
         <div class="modal-content-avaliacao">
-            <img src="botaoX.png" class = "x" onclick="fecharModal()">
+            <img src="botaoX.png" class = "botaoX" onclick="fecharModal()">
             <h1 class = "tituloAvaliacao">Avaliar HotFest</h1>
             <div class="inptsModal">
                 <label>Seu nome:</label><br>
@@ -73,7 +73,8 @@
                 <br>
                 <label>Faça upload da foto do produto aqui:</label><br>
                 <input type="text" class="inptImgProd" id="urlImage" placeholder="URL da imagem do produto" required>
-                <button id = "btnAvaliar" onclick="Avaliar()">Avaliar</button>
+                <button id="btnAvaliar" onclick="salvarAvaliacao()">Avaliar</button>
+
                 <br>
                 </div>
                 </div> 
@@ -83,6 +84,7 @@
 
 
 <script src="modalCarrinho.js"></script>
+
 <script src="modalAvaliacao.js"></script>
 
 </body>

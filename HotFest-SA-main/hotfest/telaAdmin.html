@@ -29,6 +29,8 @@
     </div>
 
     <div id="produtos">
+        <h2>Produtos Cadastrados</h2>
+        <button onclick="limparProdutos()">Limpar lista</button>
         <ul id="listaProdutos"></ul>
     </div>
     
@@ -37,23 +39,26 @@
     </div>
 
     <div id="modalCadastroDeProduto" class="modalCadastroDeProduto">
+        
         <div class="modal-content">
             <img src="botaoX.png" class = "x" onclick="fecharModal()">
             <h1 class = "tituloCadastro">Cadastro de Produto</h1>
             <div class="inptsModal">
                 <label>Nome do produto:</label><br>
-                <input type="text" class="inptNome" id="nome" placeholder="Nome do Produto" ></input>
+                <input type="text" class="inptNome" id="nome" placeholder="Nome do Produto" >
                 <br>
                 <label>Preço:</label><br>
-                <input type="number" class="inptPreco" id="preco" placeholder="Preço do Produto" ></input>
+                <input type="number" class="inptPreco" id="preco" placeholder="Preço do Produto" >
                 <br>
                 <label>Descrição do produto:</label><br>
-                <input type="text" class="inptDesc" id="descricao" placeholder="Descrição do Produto" ></input>
+                <input type="text" class="inptDesc" id="descricao" placeholder="Descrição do Produto" >
                 <br>
                 <label>Faça upload da foto do produto aqui:</label><br>
                 <input type="text" class="inptImgProd" id="urlImage" placeholder="URL da imagem do produto" required>
+                <br>
                 <button id = "btnCadastrarProduto" onclick="cadastrarProduto()">Cadastrar Produto</button>
                 <br>
+                <button id = "btnsalvarAlteracao" onclick="salvaralteraçao()">Salvar Alteração</button>
                 </div>
                 </div> 
         
