@@ -295,6 +295,11 @@ input {
     text-align: center;
 }
 
+.BtnLimparLista{
+
+    background-color: #ffd930;
+}
+
 #listaProdutos {
     display: flex;
     flex-wrap: wrap;
@@ -302,6 +307,7 @@ input {
     justify-content: center;
     list-style-type: none;
     padding: 0;
+    background-color: #ffd930;
 }
 
 .produto-item {
