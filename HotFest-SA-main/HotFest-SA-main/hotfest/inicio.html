@@ -35,6 +35,14 @@
         </div>
     </div>
 
+    <h1 class = "avaliacaoTitulo">AVALIAÇÕES</h1>
+
+    <div id="avaliacoes">
+        <ul id="listaAvaliacoes"></ul>
+        <div class = centralizarBtn>
+            <button onclick="adicionarAvaliacao()" id="btnAbrirModal"> Adicionar avaliação + </button>
+        </div>
+    </div>
 
     <div id="modalCarrinho" class="modal">
         <div class="modal-content">
@@ -43,18 +51,12 @@
              <img class = "carrinhoImg2" src="carrinho.png">
             <h2 class="tituloModal">MEU CARRINHO</h2>
         </div>
+            <div id="produtosCarrinho">
+                <ul id="listaProdutosCarrinho"></ul>
+            </div>  
             <p class="carrinhoVazio">Ops, seu carrinho está vazio...</p>
             <button onclick="fecharModal()" class="verCardapio"> Clique aqui para ver o cardápio!</button>
         </div>
-    </div>
-
-
-    <div id="avaliacoes">
-        <ul id="listaAvaliacoes"></ul>
-    </div>
-    
-    <div class = centralizarBtn>
-        <button onclick="adicionarAvaliacao()" id="btnAbrirModal"> Adicionar avaliação + </button>
     </div>
 
     <div id="modalAvaliacao" class="modalAvaliacao">

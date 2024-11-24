@@ -121,4 +121,95 @@ function limparAvaliacao() {
     exibirAvaliacao();
 }
 
-window.onload = exibirAvaliacao;
+function exibirProdutos() {
+    const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+    const listaProdutos = document.getElementById('listaProdutos');
+    listaProdutos.innerHTML = '';
+  
+    for (let i in produtos) {
+        const produto = produtos[i];
+        const li = document.createElement('li');
+        li.classList.add('produto-item');
+  
+        const img = document.createElement('img');
+        img.classList.add('produto-img'); 
+        img.src = produto.urlImage;
+        img.style.margin = '10px'; 
+        img.style.width = '100px'; 
+        img.style.height = 'auto';
+
+        const nome = document.createElement('p');
+        nome.textContent = produto.nome; 
+
+        const preco = document.createElement('p');
+        preco.innerHTML = `<span>Preço:</span> R$${produto.preco}`; 
+
+        const descricao = document.createElement('p');
+        descricao.innerHTML = `<span>Descrição:</span> ${produto.descricao}`; 
+                
+        const adicionarAoCarrinhoBtn = document.createElement('button');
+        
+        adicionarAoCarrinhoBtn.textContent = 'Adicionar ao carrinho +';
+        adicionarAoCarrinhoBtn.classList.add('adicionar-btn');
+        adicionarAoCarrinhoBtn.onclick = () => adicionarAoCarrinho(i);
+        
+        li.appendChild(img);
+        li.appendChild(nome);
+        li.appendChild(preco);
+        li.appendChild(descricao);
+        li.appendChild(adicionarAoCarrinhoBtn);
+        
+        listaProdutos.appendChild(li);
+    }
+  }
+
+window.onload = exibirAvaliacao();
+window.onload = exibirProdutos();
+
+function adicionarAoCarrinho(posicaoDoProdutoQueOUsuarioClicou) {
+    console.log(posicaoDoProdutoQueOUsuarioClicou)
+    const listaProdutos = JSON.parse(localStorage.getItem('produtos')) || [];
+
+    const produtoQueOCaraClicou = listaProdutos[posicaoDoProdutoQueOUsuarioClicou];
+
+    localStorage.setItem('carrinho', JSON.stringify(produtoQueOCaraClicou))
+
+    const produtosCarrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+
+    console.log(produtosCarrinho);
+    const listaProdutosCarrinho = document.getElementById('listaProdutosCarrinho');
+    listaProdutosCarrinho.innerHTML = '';
+  
+    for (let i in produtosCarrinho) {
+        const produtoAdicionado = produtosCarrinho[i];
+        const li = document.createElement('li');
+        li.classList.add('produto-carrinho');
+  
+        const img = document.createElement('img');
+        img.classList.add('produto-carrinho-img'); 
+        img.src = produtoAdicionado.urlImage;
+        img.style.margin = '10px'; 
+        img.style.width = '100px'; 
+        img.style.height = 'auto';
+
+        const nome = document.createElement('p');
+        nome.textContent = produtoAdicionado.nome; 
+
+        const preco = document.createElement('p');
+        preco.innerHTML = `<span>Preço:</span> R$${produtoAdicionado.preco}`; 
+
+        const descricao = document.createElement('p');
+        descricao.innerHTML = `<span>Descrição:</span> ${produtoAdicionado.descricao}`; 
+
+        li.appendChild(img);
+        li.appendChild(nome);
+        li.appendChild(preco);
+        li.appendChild(descricao);
+        
+        listaProdutosCarrinho.appendChild(li);
+                
+}
+}
+
+window.onload = adicionarAoCarrinho();

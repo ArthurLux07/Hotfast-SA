@@ -25,4 +25,4 @@ const modal = document.getElementById("modalCarrinho");
 }
 
 
-window.onload = exibirProdutos;
+window.onload = exibirProdutos();

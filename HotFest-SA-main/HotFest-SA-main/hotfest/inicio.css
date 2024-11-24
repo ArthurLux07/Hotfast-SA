@@ -334,17 +334,17 @@ input {
 }
 
 #btnAbrirModal {
+
     border-radius: 50px;
     background-color: #ffd930;
     width: 250px;
     height: 50px;
     color: #B21A18;
     font-size: 20px;
-    border: 1px solid #ffd930;
+    border: 1px solid #ffd930;  
     cursor: pointer;
-    margin-left: 720px;
-    margin-top: 400px;
-    
+    margin-left: 20px;
+    margin-bottom: 120px;    
 }
 
 .modal-content-avaliacao{
@@ -382,18 +382,16 @@ input {
 .tituloAvaliacao{
 
     text-align: center;
-    margin-bottom: 50px;
 
 }
 
 .centralizarBtn {
     width: 100%;
+    /* position: absolute; */
     margin: auto;
     bottom: 0;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
     padding-bottom: 50px;
+    left: 0px;
 }
 
 #btnAvaliar {
@@ -404,9 +402,6 @@ input {
     width: 250px;
     height: 50px;
     cursor: pointer;
-    align-items: center;
-    align-content: center;
-    margin-top: 30px;
  }
 
  .inptNome{
@@ -450,10 +445,11 @@ input {
 #avaliacoes {
     margin-top: 20px;
     display: flex;
+    z-index: 10;
 }
 
 #avaliacoes {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #avaliacoes h2 {
@@ -465,11 +461,11 @@ input {
 
 #listaAvaliacoes {
     display: flex;
-    flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
     list-style-type: none;
     padding: 0;
+    margin-left: 180px;
 }
 
 .avaliacoes-item {
@@ -506,3 +502,26 @@ input {
     color: #333;
 }
 
+.adicionar-btn {
+    background-color: #ffd930;
+    border-radius: 50px;
+    border: 0;
+    color: #B21A18;
+    font-size: 15px;
+    width: 150px;
+    cursor: pointer;
+
+}
+
+.avaliacaoTitulo {
+
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffd930;
+    font-size: 25px;
+    margin-right: 200px;
+    margin-top: 15px;
+
+}

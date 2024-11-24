@@ -3,6 +3,10 @@ const modal = document.getElementById('modalCadastroDeProduto')
 function adicionarProduto(){
 
     modal.style.display = "block";
+    const BtnSave = document.getElementById("btnsalvarAlteracao")
+    BtnSave.style.display = 'none'
+    const BtnCadastro = document.getElementById("btnCadastrarProduto")
+    BtnCadastro.style.display = 'block'
 }
 
 function fecharModal() {
@@ -23,7 +27,7 @@ function cadastrarProduto() {
     const preco = document.getElementById('preco').value;
     const descricao = document.getElementById('descricao').value;
     const urlImage = document.getElementById('urlImage').value;
-
+    
     const produto = {
         nome,
         preco,
@@ -86,7 +90,7 @@ function exibirProdutos() {
         deleteBtn.onclick = () => deletarProduto(i);
 
         editBtn.textContent = 'Editar';
-        deleteBtn.classList.add('edit-btn');
+        editBtn.classList.add('edit-btn');
         editBtn.onclick = () => editarProduto(i);
         
         li.appendChild(img);
@@ -109,8 +113,43 @@ function exibirProdutos() {
 
   function editarProduto(index) {
     let produtos = JSON.parse(localStorage.getItem('produtos'));
-    produtos.splice(index, 1);
+    const produto = produtos[index];
+    const BtnSave = document.getElementById("btnsalvarAlteracao")
+    BtnSave.style.display = 'block'
+    const BtnCadastro = document.getElementById("btnCadastrarProduto")
+    BtnCadastro.style.display = 'none'
+    
+
+    // Preencher os campos do formulário com os dados do produto
+    document.getElementById('nome').value = produto.nome;
+    document.getElementById('preco').value = produto.preco;
+    document.getElementById('descricao').value = produto.descricao;
+    document.getElementById('urlImage').value = produto.urlImage;
+
+    // Mostrar o modal para permitir edição
+    modal.style.display = "block";
+
+    // Salvar o índice do produto sendo editado
+    modal.setAttribute('data-editing-index', index);
+}
+
+function salvaralteraçao() {
+    let produtos = JSON.parse(localStorage.getItem('produtos'));
+    const index = modal.getAttribute('data-editing-index');
+
+    // Atualizar os dados do produto com os novos valores do formulário
+    produtos[index] = {
+        nome: document.getElementById('nome').value,
+        preco: document.getElementById('preco').value,
+        descricao: document.getElementById('descricao').value,
+        urlImage: document.getElementById('urlImage').value,
+    };
+
+    // Salvar a lista atualizada no localStorage
     localStorage.setItem('produtos', JSON.stringify(produtos));
+
+    // Fechar o modal e exibir os produtos atualizados
+    fecharModal();
     exibirProdutos();
 }
   
@@ -119,4 +158,4 @@ function exibirProdutos() {
       exibirProdutos();
   }
   
-  window.onload = exibirProdutos;
+  window.onload = exibirProdutos();
